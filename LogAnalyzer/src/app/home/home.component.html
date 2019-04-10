@@ -1,0 +1,25 @@
+<!-- <h1> Log Analyzer</h1>
+<hr> -->
+
+<div class = "centerDiv">
+    <fieldset>
+        <legend>Log File Analyzer</legend>
+        <form class ="container" (ngSubmit)="sendFile(file.value, format.value)">
+                <div class="loginBlock">
+                    <label for="file">Choose File : </label><input type='file' #file (change)="fileChanged($event) "class="inputfile"> <br>
+                    <label for="format">Choose Format : </label>
+                    <select  name = "format" #format>
+                          <option value="" selected disabled hidden>Choose here</option>
+                      <option value="Android" selected>Android Log File</option>
+                      <option value="Windows">Windows Log File</option>
+                      <option value="Server">Server Log File</option>
+                      <option value="Other">Others</option>
+                    </select><br>
+                      <input class = "button" type="submit" value="SUBMIT">
+                    <!-- <input type="reset" value="RESET"> -->
+                    <!-- <input type="button" value="Logout" (click)="clickLogout()"> -->
+                </div>
+            </form>
+    
+    </fieldset>
+</div>
