@@ -1,7 +1,7 @@
-<!-- <h1> Log Analyzer</h1>
-<hr> -->
+<h1> Log Analyzer</h1>
+<hr>
 
-<div class = "centerDiv">
+<div *ngIf="display" class = "centerDiv">
     <fieldset>
         <legend>Log File Analyzer</legend>
         <form class ="container" (ngSubmit)="sendFile(file.value, format.value)">
@@ -22,4 +22,19 @@
             </form>
     
     </fieldset>
+</div>
+
+<div *ngIf=!display>
+    <table id="logFile">
+        <tr>
+          <th *ngFor="let col of file_format">
+            {{col}}
+          </th>
+        </tr>
+        <tr *ngFor="let e of arr">
+          <td *ngFor="let col of file_format">
+            {{e[col]}}
+          </td>
+        </tr>
+      </table>
 </div>

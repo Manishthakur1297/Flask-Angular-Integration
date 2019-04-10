@@ -7,11 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RestService } from './Services/rest.service';
 import { HttpModule } from '@angular/http';
+import { DisplayComponent } from './display/display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,
