@@ -13,7 +13,11 @@ export class RestService {
 
   constructor(private http : Http) { }
 
-  url : string = "http://127.0.0.1:5000/readFile/";
+  responseData : any;
+
+  readUrl : string = "http://127.0.0.1:5000/readFile/";
+  searchUrl : string = "http://127.0.0.1:5000/search?key1=";
+  sortUrl : string = "http://127.0.0.1:5000/sort?key1=";
 
   readFile(file_text, file_name, format)
   {
@@ -21,7 +25,19 @@ export class RestService {
     console.log(format);
     console.log(file_text);
     let arr = [file_name, format, file_text] 
-    return this.http.post(this.url,arr)
+    return this.http.post(this.readUrl,arr)
+    .map((response : any ) => response.json()); 
+  }
+
+  searchFile(key, col)
+  {
+    return this.http.get(this.searchUrl+key+"&key2="+col)
+    .map((response : any ) => response.json()); 
+  }
+
+  sortFile(col)
+  {
+    return this.http.get(this.sortUrl+col)
     .map((response : any ) => response.json()); 
   }
 

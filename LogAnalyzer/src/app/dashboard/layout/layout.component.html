@@ -1,0 +1,15 @@
+<h1>Log Analyzer</h1>
+<hr>
+<div class="navigation-bar">
+  <div id="navigation-container">
+        <ul> 
+          <li><a routerLink="analyze" routerLinkActive="active">Analyze</a></li>
+          <li><a routerLink="visualize" routerLinkActive="active">Visualize</a></li>
+          <li><a routerLink="search" routerLinkActive="active">Search</a></li>
+          <li><a routerLink="sorting" routerLinkActive="active">Sort</a></li>
+          <li><button type="button" (click)="logout()">Log Analyzer</button></li>
+      </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

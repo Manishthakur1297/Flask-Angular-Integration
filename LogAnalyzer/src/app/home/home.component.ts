@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { RestService } from '../Services/rest.service';
 import { shiftInitState } from '@angular/core/src/view';
 import { Router } from '@angular/router';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'home',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private rs : RestService, private router : Router) { }
+  constructor(private rs : RestService, private router : Router, private auth : AuthService) { }
 
   ngOnInit()
   {
@@ -48,10 +49,15 @@ export class HomeComponent implements OnInit {
           (response) => 
           {
             console.log(response);
-            this.display = false;
-            this.arr = response[0];
-            this.file_format = response[1];
-            //this.router.navigate(['\display']);
+            this.rs.responseData = response;
+            // this.display = false;
+            // this.arr = response[0];
+            // this.file_format = response[1];
+            this.auth.setToken("file");
+            // this.auth.setId(f.uID);
+            //this.auth.setRole(f.role);
+            this.router.navigate([""]);
+            
           },
           (error) =>
           {
