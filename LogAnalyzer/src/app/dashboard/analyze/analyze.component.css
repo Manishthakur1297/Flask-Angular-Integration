@@ -6,6 +6,7 @@ h1,h2
 /* ------------------Table--------------- */
 
 #logFile {
+  background: #fff;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
