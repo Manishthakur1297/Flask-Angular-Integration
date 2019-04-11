@@ -16,9 +16,9 @@ app = Flask(__name__)
 def first():
     return jsonify({"Welcome": "Here"})
 
-
 @app.route("/readFile/", methods = ['POST'])
 def ReadFile():
+    global resList
     text = request.data
     ff = text.decode('utf-8').split(",")
     file_name = ''.join(ff[0][4:]).replace("\"",'').strip()
@@ -46,32 +46,40 @@ def ReadFile():
         for k ,v in it.zip_longest(format,l):
             d[k] = v
         mainList.append(d)
-        
+        resList = mainList
 
-    # try:
-    #     i = 1
-    #     mainList = []
-    #     d = dict()
-    #     for line in file_text1:
-    #         l = re.findall(rex, line)
-    #         size = len(format)
-    #         l[size-1] = ' '.join(l[size-1:])
-    #         del l[size:]
-    #         # template_id = hashlib.md5(l[size-1].encode('utf-8')).hexdigest()[0:8]
-    #         # if(template_id not in d):
-    #         #     d[template_id] = "E"+str(i)
-    #         #     i+=1
-    #         # l.append(d[template_id])
-    #         mainList.append(l)
-    #     #format.append('Event')
-    #     #pd.set_option('display.max_columns', None)  
     #     df = pd.DataFrame(mainList, columns=format)
     #     df.to_csv(file_name+"_structured.csv", sep=',', encoding='utf-8', index=False)
-
-    # except Exception as e:
-    #     print(e)
    
     return jsonify(mainList,format)
+
+
+@app.route("/search", methods = ['GET'])
+def SearchFile():
+    text = request.args
+    print (text) # For debugging    
+    key = text['key1']
+    col = text['key2']
+
+    print()
+    df  = pd.DataFrame(resList)
+    #print(df.head(5))
+    data = df.loc[df[col] == key]
+    #print(dict(data))
+    return jsonify(data.to_dict('records'))
+
+
+@app.route("/sort", methods = ['GET'])
+def SortFile():
+    text = request.args
+    print (text) # For debugging    
+    col = text['key1']
+
+    df  = pd.DataFrame(resList)
+    data = df.sort_values(by=[col])
+    #print(dict(data))
+    return jsonify(data.to_dict('records')) 
+
 
 if __name__=='__main__':
     app.run(debug=True)

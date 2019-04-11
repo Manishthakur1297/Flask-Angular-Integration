@@ -37,72 +37,72 @@ titles = {
 
     'HDFS': {
         'log_format': ['Date', 'Time','Pid', 'Level','Component','Content'],
-        'regex': [r'blk_-?\d+', r'(\d+\.){3}\d+(:\d+)?']
+        'regex': [r'[\S]+']
         },
 
     'Hadoop': {
         'log_format': ['Date', 'Time', 'Level','Process', 'Component','Content'],
-        'regex': [r'(\d+\.){3}\d+']
+        'regex': [r'[\S]+']
         },
 
     'Spark': {
         'log_format': ['Date', 'Time', 'Level','Content'],
-        'regex': [r'(\d+\.){3}\d+', r'\b[KGTM]?B\b', r'([\w-]+\.){2,}[\w-]+']
-        },
-
-    'Zookeeper': {
-        'log_format': ['Date', 'Time', 'Level', 'Node:Component>@<Id','Content'],
-        'regex': [r'(/|)(\d+\.){3}\d+(:\d+)?']
+        'regex': [r'[\S]+']
         },
 
     'BGL': {
         'log_format': ['Label', 'Timestamp', 'Date', 'Node', 'Time', 'NodeRepeat', 'Type', 'Component', 'Level','Content'],
-        'regex': [r'core\.\d+']
+        'regex': [r'[\S]+']
         },
 
     'HPC': {
         'log_format': ['LogId', 'Node', 'Component', 'State', 'Time', 'Flag', 'Content'],
-        'regex': [r'=\d+']
+        'regex': [r'[\S]+']
         },
 
     'Thunderbird': {
         'log_format': ['Label', 'Timestamp', 'Date', 'User','Month','Day', 'Time', 'Location', 'Component', 'Content'],
-        'regex': [r'(\d+\.){3}\d+']
+        'regex': [r'[\S]+']
         },
 
 
     'Linux': {
         'log_format': ['Month', 'Date', 'Time', 'Level', 'Component', 'PID', 'Content'],
-        'regex': [r'(\d+\.){3}\d+', r'\d{2}:\d{2}:\d{2}']
+        'regex': [r'[\S]+']
         },
 
     'HealthApp': {
         'log_format': ['Time', 'Component', 'Pid', 'Content'],
-        'regex': []
+        'regex': [r'[\S]+']
         },
 
     'Apache': {
-        'log_format': ['Time', 'Level','Content'],
-        'regex': [r'(\d+\.){3}\d+']
+        'log_format': ['Day', 'Month', 'Date', 'Time', 'Year', 'Level','Content'],
+        'regex': [r'[\S]+']
         },
 
     'Proxifier': {
         'log_format': ['Time', 'Program', 'Content'],
-        'regex': [r'<\d+\ssec', r'([\w-]+\.)+[\w-]+(:\d+)?', r'\d{2}:\d{2}(:\d{2})*', r'[KGTM]B'],
+        'regex': [r'[\S]+']
         },
 
     'OpenSSH': {
         'log_format': [ 'Date', 'Day', 'Time', 'Component', 'Pid','Content'],
-        'regex': [r'(\d+\.){3}\d+', r'([\w-]+\.){2,}[\w-]+']
+        'regex': [r'[\S]+']
         },
 
     'OpenStack': {
         'log_format': ['Logrecord', 'Date', 'Time', 'Pid', 'Level', 'Component', 'ADDR','Content'],
-        'regex': [r'((\d+\.){3}\d+,?)+', r'/.+?\s', r'\d+']
+        'regex': [r'[\S]+']
     },
 
     'Mac': {
         'log_format': ['Month', 'Date', 'Time', 'User', 'Component', 'PID', 'Address', 'Content'],
-        'regex': [r'([\w-]+\.){2,}[\w-]+']
+        'regex': [r'[\S]+']
+        },
+
+        'Others': {
+        'log_format': ['Component1', 'Component2', 'Component3','Component4'],
+        'regex': [r'[\S]+']
         }
 }
