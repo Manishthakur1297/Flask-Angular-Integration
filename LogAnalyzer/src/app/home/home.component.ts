@@ -50,12 +50,7 @@ export class HomeComponent implements OnInit {
           {
             console.log(response);
             this.rs.responseData = response;
-            // this.display = false;
-            // this.arr = response[0];
-            // this.file_format = response[1];
             this.auth.setToken("file");
-            // this.auth.setId(f.uID);
-            //this.auth.setRole(f.role);
             this.router.navigate([""]);
             
           },

@@ -48,8 +48,8 @@ def ReadFile():
         mainList.append(d)
         resList = mainList
 
-    #     df = pd.DataFrame(mainList, columns=format)
-    #     df.to_csv(file_name+"_structured.csv", sep=',', encoding='utf-8', index=False)
+        df = pd.DataFrame(mainList, columns=format)
+        df.to_csv(file_name+"_structured.csv", sep=',', encoding='utf-8', index=False)
    
     return jsonify(mainList,format)
 
