@@ -8,6 +8,7 @@ import hashlib
 from collections import OrderedDict
 import itertools as it
 from file_titles import titles
+import json
 
 app = Flask(__name__)
 
@@ -48,8 +49,8 @@ def ReadFile():
         mainList.append(d)
         resList = mainList
 
-        df = pd.DataFrame(mainList, columns=format)
-        df.to_csv(file_name+"_structured.csv", sep=',', encoding='utf-8', index=False)
+        #df = pd.DataFrame(mainList, columns=format)
+        #df.to_csv(file_name+"_structured.csv", sep=',', encoding='utf-8', index=False)
    
     return jsonify(mainList,format)
 
@@ -78,7 +79,42 @@ def SortFile():
     df  = pd.DataFrame(resList)
     data = df.sort_values(by=[col])
     #print(dict(data))
-    return jsonify(data.to_dict('records')) 
+    return jsonify(data.to_dict('records'))
+
+
+@app.route("/visualize", methods = ['GET'])
+def VisualizeFile():
+
+    df  = pd.DataFrame(resList)
+    #print(df.apply(pd.value_counts))
+    #print (df.groupby['category'].size()
+    
+    df = df.to_dict()
+    res = []
+    res.append(list(df))
+    res.append(df)
+    return jsonify(res)#df.to_dict('index'))
+
+
+@app.route("/pieChart", methods = ['GET'])
+def PieChart():
+    text = request.args
+    print (text) # For debugging    
+    col = text['key1']
+    
+    df  = pd.DataFrame(resList)
+    data = dict(pd.DataFrame.from_dict(df[col].value_counts())[col])
+    d = dict()
+    print(data.items())
+    for key, val in data.items():
+        d[key] = int(val)
+    print(d)
+    l1 = []
+    l1.append(list(d.keys()))
+    l1.append(list(d.values()))
+    #pd.Series(d).to_json(orient='values')
+    return jsonify(l1)
+    #return json.dumps(d), 200, 'application/json'
 
 
 if __name__=='__main__':

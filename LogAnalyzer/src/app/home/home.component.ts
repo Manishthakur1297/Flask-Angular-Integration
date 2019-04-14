@@ -34,9 +34,9 @@ export class HomeComponent implements OnInit {
     let fileReader = new FileReader();
     fileReader.onload = (file) => {
       this.file_text = fileReader.result
-      console.log(this.file_text);
+      //console.log(this.file_text);
     }
-    console.log(fileReader.readAsText(this.file));
+    fileReader.readAsText(this.file);
   }
 
       sendFile(f, format)
@@ -48,9 +48,9 @@ export class HomeComponent implements OnInit {
         (
           (response) => 
           {
-            console.log(response);
+            //console.log(response);
             this.rs.responseData = response;
-            this.auth.setToken("file");
+            //this.auth.setToken("file");
             this.router.navigate([""]);
             
           },
@@ -62,19 +62,5 @@ export class HomeComponent implements OnInit {
 
         )
       }
-
-    //   @ViewChild('fileInput') fileInput;
-    //   uploadFile(f) {
-    //     const files: FileList = this.fileInput.nativeElement.files;
-    // if (files.length === 0) {
-    //   return;
-    // };
-
-    // this.rs.parseTable(files).subscribe((data: any) => {
-    //   console.log(data);
-    // });
-
-
-    //   }
 
   }

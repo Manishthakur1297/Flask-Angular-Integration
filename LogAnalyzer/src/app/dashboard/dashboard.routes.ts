@@ -5,13 +5,15 @@ import { VisualizeComponent } from './visualize/visualize.component';
 import { SearchComponent } from './search/search.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { AuthGuard } from '../guard/auth-guard.service';
+import { BarChartComponent } from './visualize/bar-chart/bar-chart.component';
+import { PieChartComponent } from './visualize/pie-chart/pie-chart.component';
 
 export const dashboardroutes : Routes = 
 [
     {
         path : 'dashboard',
         component : LayoutComponent,
-        canActivate : [AuthGuard],
+        //canActivate : [AuthGuard],
         children : 
         [
             {
@@ -27,7 +29,18 @@ export const dashboardroutes : Routes =
             {
 
                 path : 'visualize',
-                component : VisualizeComponent
+                component : VisualizeComponent,
+                children : 
+                [
+                    {
+                        path : 'barChart',
+                        component : BarChartComponent
+                    }
+,
+{
+                        path : 'pieChart',
+                        component : PieChartComponent
+                    }                ]
             },
 
             {

@@ -10,14 +10,18 @@ import { dashboardroutes } from './dashboard.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AuthGuard } from '../guard/auth-guard.service';
+import { BarChartComponent } from './visualize/bar-chart/bar-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './visualize/pie-chart/pie-chart.component';
 
 @NgModule({
-  declarations: [LayoutComponent, AnalyzeComponent, VisualizeComponent, SearchComponent, SortingComponent],
+  declarations: [LayoutComponent, AnalyzeComponent, VisualizeComponent, SearchComponent, SortingComponent, BarChartComponent, PieChartComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardroutes),
     FormsModule,HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [AuthGuard]
 })

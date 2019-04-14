@@ -20,12 +20,9 @@ export class AnalyzeComponent implements OnInit {
   response : any;
 
   ngOnInit() {
-    if(this.auth.isAuthenticated())
-    {
       this.response = this.rs.responseData;
       this.arr = this.response[0];
       this.file_format = this.response[1];
-    }
   }
 
 }

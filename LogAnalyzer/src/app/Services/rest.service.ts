@@ -15,15 +15,19 @@ export class RestService {
 
   responseData : any;
 
+  columnData : any;
+
   readUrl : string = "http://127.0.0.1:5000/readFile/";
   searchUrl : string = "http://127.0.0.1:5000/search?key1=";
   sortUrl : string = "http://127.0.0.1:5000/sort?key1=";
+  visualizeUrl : string = "http://127.0.0.1:5000/visualize";
+  pieChartUrl : string = "http://127.0.0.1:5000/pieChart?key1=";
 
   readFile(file_text, file_name, format)
   {
     console.log(file_name);
     console.log(format);
-    console.log(file_text);
+    //console.log(file_text);
     let arr = [file_name, format, file_text] 
     return this.http.post(this.readUrl,arr)
     .map((response : any ) => response.json()); 
@@ -41,4 +45,16 @@ export class RestService {
     .map((response : any ) => response.json()); 
   }
 
+  visualizeFile()
+  {
+    return this.http.get(this.visualizeUrl)
+    .map((response : any ) => response.json()); 
+  }
+
+  
+  pieChart(col)
+  {
+    return this.http.get(this.pieChartUrl+col)
+    .map((response : any ) => response.json()); 
+  }
 }
