@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
+import { AuthGuard } from '../guard/auth-guard.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RestService {
+export class RestService implements OnInit {
 
-  constructor(private http : Http) { }
+  constructor(private http : Http, private auth : AuthService) { }
+
+  ngOnInit()
+  {
+    
+  }
 
   responseData : any;
 

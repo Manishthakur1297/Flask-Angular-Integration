@@ -20,7 +20,8 @@ export class AnalyzeComponent implements OnInit {
   response : any;
 
   ngOnInit() {
-      this.response = this.rs.responseData;
+      this.response = this.rs.responseData;//this.auth.getResponsedata();
+      console.log(this.response)
       this.arr = this.response[0];
       this.file_format = this.response[1];
   }

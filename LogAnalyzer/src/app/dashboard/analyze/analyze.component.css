@@ -29,3 +29,8 @@ h1,h2
   color: white;
 }
 
+
+/* -=--------------- */
+
+tr.approved { background-color: green }
+tr.rejected { background-color: red }

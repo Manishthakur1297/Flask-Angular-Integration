@@ -21,7 +21,7 @@ export class PieChartComponent implements OnInit {
   };
 
   public barChartLabels : any;
-  public barChartType = 'pie';
+  public barChartType = 'line';
   public barChartLegend = true;
 
   
@@ -53,7 +53,7 @@ export class PieChartComponent implements OnInit {
             var keys = response[0];
             var values = response[1];
             this.display = true;
-            this.barChartLabels = ["A","B"];
+            this.barChartLabels = keys;
             this.barChartData =[
               {data: values, label: col}
             ]

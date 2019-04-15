@@ -13,8 +13,7 @@ export class LayoutComponent implements OnInit {
   constructor(private auth : AuthService, private router : Router, private rs : RestService) { }
 
   ngOnInit() {
-    
-    this.auth.getDashboard();
+      this.auth.getDashboard();
   }
 
   logout()

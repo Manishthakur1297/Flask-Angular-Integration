@@ -8,10 +8,7 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-
   layout : string; 
-  id : string;
-
   constructor(private _router: Router) { }
 
   clear(): void {
@@ -23,19 +20,9 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getId()
-  {
-    return localStorage.getItem('id');
-  }
-
-  setId(i)
-  {
-    localStorage.setItem('id', i);
-  }
-
   getDashboard()
   {
-    this._router.navigate(['/dashboard/']);
+    this._router.navigate(['/dashboard/analyze']);
   }
 
   isAuthenticated(): boolean {
@@ -45,6 +32,16 @@ export class AuthService {
   setToken(token): void {
     localStorage.setItem('token', token);
     this._router.navigate(['/dashboard/']);
+  }
+
+  setResponseData(res)
+  {
+    localStorage.setItem('responseData', res)
+  }
+
+  getResponsedata()
+  {
+    return localStorage.getItem('responseData');
   }
 
   logout(): void {

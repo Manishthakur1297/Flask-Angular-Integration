@@ -155,6 +155,9 @@ body::after {
 
   /*  ----------------------------Navbar-------------------------*/
 
+
+/* -----------------------------Old-------------- */
+
 .logo {
   float: left;
   width: auto;
@@ -205,14 +208,14 @@ float:left;
   border:none; 
   padding:0!important;
   font-size: 20px;
-  border-bottom: 3px dotted red;
+  border-bottom: 1px solid red;
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   cursor: pointer;
   color: white;
   font-style: oblique, italic, bold;
   background: #4CAF50;
   text-decoration: none;
-  line-height: 55px;
+  line-height: 45px;
   
   
 
@@ -279,3 +282,13 @@ input[type="submit"]:disabled
   background-color: #4CAF50;
   color: white;
 }
+
+/* Chart */
+
+div#chartBackground{
+  background-image: none;
+  background: #fff;
+  width: 100% !important;
+  margin: 0 auto;
+  display: block;
+  }

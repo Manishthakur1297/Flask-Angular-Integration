@@ -13,7 +13,7 @@ export const dashboardroutes : Routes =
     {
         path : 'dashboard',
         component : LayoutComponent,
-        //canActivate : [AuthGuard],
+        // canActivate : [AuthGuard],
         children : 
         [
             {
@@ -25,6 +25,14 @@ export const dashboardroutes : Routes =
                 path : 'analyze',
                 component : AnalyzeComponent
             },
+            {
+                path : 'barChart',
+                component : BarChartComponent
+            },
+            {
+                path : 'pieChart',
+                component : PieChartComponent
+            },
 
             {
 
@@ -35,12 +43,12 @@ export const dashboardroutes : Routes =
                     {
                         path : 'barChart',
                         component : BarChartComponent
-                    }
-,
-{
+                    },
+                    {
                         path : 'pieChart',
                         component : PieChartComponent
-                    }                ]
+                    }                
+                ]
             },
 
             {

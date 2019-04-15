@@ -13,9 +13,11 @@ import { AuthGuard } from '../guard/auth-guard.service';
 import { BarChartComponent } from './visualize/bar-chart/bar-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './visualize/pie-chart/pie-chart.component';
+import { DougnutChartComponent } from './visualize/dougnut-chart/dougnut-chart.component';
+import { RadarChartComponent } from './visualize/radar-chart/radar-chart.component';
 
 @NgModule({
-  declarations: [LayoutComponent, AnalyzeComponent, VisualizeComponent, SearchComponent, SortingComponent, BarChartComponent, PieChartComponent],
+  declarations: [LayoutComponent, AnalyzeComponent, VisualizeComponent, SearchComponent, SortingComponent, BarChartComponent, PieChartComponent, DougnutChartComponent, RadarChartComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardroutes),

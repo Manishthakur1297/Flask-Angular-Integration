@@ -13,27 +13,39 @@ export class VisualizeComponent implements OnInit {
 
   constructor(private auth : AuthService, private router : Router, private rs : RestService, private elementRef: ElementRef) { }
 
-  LineChart = [];
-  d = {};
+  arr:any;
+  file_format:any;
+  chart_type = [{title : "Line Chart", name : "line"}, {title : "Bar Chart", name : "bar"}, {title : "Pie Chart", name : "pie"}, 
+  {title : "Doughnut Chart", name : "doughnut"}, {title : "Radar Chart", name : "radar"},
+  {title : "Polar Area Chart", name : "polarArea"}];
+  res : any;
 
-  ngOnInit() {
-    
+  file_format1:any;
+  display : boolean = false;
+  column : any ;
 
-    this.rs.visualizeFile()
+  onChange(item)
+  {
+    this.barChartType = item;
+  }
+
+  onColumnChange(col)
+  {
+    this.column = col;
+    this.rs.pieChart(col)
     .subscribe
         (
           (response) => 
           {
             console.log(response);
-            //console.log(response[0])
-            //console.log(response[1])
-            this.d = response[1];
-            this.rs.columnData = this.d;
-            //console.log(this.rs.columnData)
-            // this.res = this.rs.responseData;
-            // // this.arr = this.response[0];
-            // this.arr = response;
-            // this.file_format1 = this.res[1];
+            var keys = response[0];
+            var values = response[1];
+            this.display = true;
+            this.barChartLabels = keys;
+            this.barChartData =[
+              {data: values, label: col}
+            ]
+
           },
           (error) =>
           {
@@ -42,59 +54,46 @@ export class VisualizeComponent implements OnInit {
           }
 
         )
-    //this.res = this.rs.responseData;
-    // this.arr = this.response[0];
-    //this.file_format = this.res[1];
-    // this.LineChart = new Chart('lineChart' , {
-
-    //   type:'line',
-    //   data : {
-    //     labels : ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-    //     datasets : [{
-    //       label : 'No of items sold in Months',
-    //       data : [6,2,4,6,9,11,3,22,9,1,7],
-    //       fill : false,
-    //       lineTension : 0.2,
-    //       borderColor : "red",
-    //       borderWidth : 1
-    //     }]
-    //   },
-    //   options : {
-    //     title : 
-    //     {
-    //       text : "Line Chart",
-    //       display : true
-    //     },
-    //     scales : {
-    //       yAxes : [{
-    //         ticks : {
-    //           beginAtZero : true
-    //         }
-    //       }]
-    //     }
-    //   }
-    // })
-
   }
 
-  chart : any;
-  arr:any;
-  file_format:any;
-  file_format1:any;
-  res : any;
+  ngOnInit() {
+
+    this.res = this.rs.responseData;
+    this.file_format = this.res[1];
+    this.column = this.file_format[0];
+    this.onColumnChange(this.column);
+  }
+
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+
+  public barChartLabels : any;
+  public barChartType : String = "line";
+  public barChartLegend = true;
+
   
-  // visualizeQuery(col1, col2)
+  public barChartData : any;
+
+  // visualizeQuery(col, chart_type)
   // {
-  //   this.rs.visualizeFile(col1, col2)
+  //   console.log(chart_type);
+  //   this.rs.pieChart(col)
   //   .subscribe
   //       (
   //         (response) => 
   //         {
   //           console.log(response);
-  //           this.res = this.rs.responseData;
-  //           // this.arr = this.response[0];
-  //           this.arr = response;
-  //           this.file_format1 = this.res[1];
+  //           var keys = response[0];
+  //           var values = response[1];
+  //           this.display = true;
+  //           //this.barChartType = chart_type;
+  //           this.barChartLabels = keys;
+  //           this.barChartData =[
+  //             {data: values, label: col}
+  //           ]
+
   //         },
   //         (error) =>
   //         {
@@ -103,42 +102,6 @@ export class VisualizeComponent implements OnInit {
   //         }
 
   //       )
-  //   //let htmlRef = this.elementRef.nativeElement.querySelector('canvas');
-  //   var ctx = document.getElementById("myChart");
-  //   this.chart = new Chart(ctx, {
-
-  //     type: 'line',
-  //     data: {
-  //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //      datasets : [
-  //        {
-  //         //label: '# of Votes',
-  //         data: [12, 19, 3, 5, 2, 3],
-  //         borderColor: "#3cba9f",
-  //         fill: false
-  //       },
-  //       { 
-  //         data: [12, 19, 3, 5, 2, 3],
-  //         borderColor: "#ffcc00",
-  //         fill: false
-  //       },
-  //         ]
-  //       },
-  //      options : {
-  //        legend : {
-  //          display : false
-  //        },
-  //        scales : {
-  //          xAxes : [{
-  //            display:true
-  //          }],
-  //          yAxes : [{
-  //            display : true
-  //          }],
-  //        }
-  //      }
-
-  //   });
   // }
 
 }
