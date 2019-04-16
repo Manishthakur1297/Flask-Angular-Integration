@@ -283,6 +283,15 @@ input[type="submit"]:disabled
   color: white;
 }
 
+
+.positive {
+  background-color: green;
+}
+
+.negative {
+  background-color: red;
+}
+
 /* Chart */
 
 div#chartBackground{
@@ -292,3 +301,5 @@ div#chartBackground{
   margin: 0 auto;
   display: block;
   }
+
+
